@@ -1,0 +1,91 @@
+/* ==========================================================================
+   custom.css — точечная настройка поверх Bootstrap 5.3.8
+   Подключается ПОСЛЕ bootstrap.min.css, поэтому может переопределять его.
+   Полностью Bootstrap не дублируем.
+   ========================================================================== */
+
+:root {
+  --shop-primary: #2563eb;
+  --shop-primary-dark: #1e40af;
+  --shop-accent: #f59e0b;
+}
+
+body {
+  background-color: #f5f7fb;
+}
+
+.hero {
+  background: linear-gradient(135deg, var(--shop-primary-dark), var(--shop-primary));
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  right: -120px;
+  bottom: -120px;
+  width: 360px;
+  height: 360px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.hero h1,
+.hero .lead {
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.advantage-icon {
+  font-size: 2.5rem;
+  line-height: 1;
+}
+
+.card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.product-item .card:hover,
+.card.shadow-sm:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0.75rem 1.5rem rgba(0, 0, 0, 0.12) !important;
+}
+
+/* Изображения карточек одного размера */
+.card-img-top {
+  aspect-ratio: 4 / 4;
+  object-fit: cover;
+}
+
+/* Бейджи в левом верхнем углу карточки */
+.card>.badge.position-absolute {
+  z-index: 2;
+  top: 0;
+  left: 0;
+}
+
+/* Карусель на главной: скругление и единая высота */
+#heroCarousel img {
+  aspect-ratio: 4 / 4;
+  object-fit: cover;
+}
+
+/* Навигация: активный пункт с акцентной линией */
+.navbar .nav-link.active {
+  color: var(--shop-primary) !important;
+  font-weight: 600;
+}
+
+/* Уважение к пользователям, которые отключили анимации */
+@media (prefers-reduced-motion: reduce) {
+  .card {
+    transition: none;
+  }
+}
+
+/* Адаптивность: на маленьких экранах уменьшаем заголовок hero */
+@media (max-width: 600px) {
+  .hero .display-5 {
+    font-size: 2rem;
+  }
+}
